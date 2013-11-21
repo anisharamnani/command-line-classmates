@@ -19,7 +19,10 @@ class Scraper
 	end
 
 	def get_students_names
-		html.search("div.face.front h3").text
+		# html.search("div.face.front h3").text
+		# solution: http://stackoverflow.com/questions/12659606/insert-spaces-into-a-string-using-ruby
+		# add in a period to account for keith's name (Jr.)
+		html.search("div.face.front h3").text.split(/(?<=[a-z.])(?=[A-Z])/)
 	end
 
 	def get_student_blogs
